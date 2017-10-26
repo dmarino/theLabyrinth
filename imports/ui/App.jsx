@@ -5,25 +5,48 @@ import {createContainer} from "meteor/react-meteor-data";
 
 import "./styles/App.css";
 
+import Lista from "./Lista.jsx";
+import Inicio from "./Inicio.jsx";
+
 import {Laberintos} from "../api/laberintos.js";
 import {Estado} from "../api/estado.js";
 
 class App extends Component{
+
 	constructor(props){
 		super(props);
-
 		this.state={
+			inicio:true,
 		    jugar:false
 		};
 	}
 
+	inicio(){
+		this.setState({
+			inicio:false
+		});
+	}
 
 	render(){
 		return (
-			<div className="App">		
-			    <div id="banner">
-				    <img src="./images/banner.png"/>
-			    </div>	
+			<div id="App">
+			    { this.state.inicio ?
+		    	    <Inicio 
+		                inicio={this.inicio.bind(this)}
+		            >
+		   	        </Inicio>
+		        :
+		            <div>
+		                { this.state.jugar?
+			                <h1>Juega</h1>
+			            :
+			                <Lista
+			                    estado={this.props.estado}
+			                > 
+			                </Lista>
+			            }
+		            </div>
+		        }		
 			</div>
 		);
 	}
@@ -37,6 +60,6 @@ App.PropTypes={
 export default createContainer(()=>{
 	return{
 	    laberintos: Laberintos.find({}).fetch(),
-	    estado: Estado.find({}).fetch()
+	    estado: Estado.find({}).fetch(),
 	};
 },App);
