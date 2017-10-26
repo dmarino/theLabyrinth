@@ -6,7 +6,7 @@ import {createContainer} from "meteor/react-meteor-data";
 import "./styles/App.css";
 
 import Lista from "./Lista.jsx";
-import Inicio from "./Inicio.jsx";
+import Inicio from "./components/Inicio.jsx";
 
 import {Laberintos} from "../api/laberintos.js";
 import {Estado} from "../api/estado.js";
@@ -30,23 +30,17 @@ class App extends Component{
 	render(){
 		return (
 			<div id="App">
-			    { this.state.inicio ?
-		    	    <Inicio 
-		                inicio={this.inicio.bind(this)}
-		            >
-		   	        </Inicio>
-		        :
-		            <div>
-		                { this.state.jugar?
-			                <h1>Juega</h1>
-			            :
-			                <Lista
-			                    estado={this.props.estado}
-			                > 
-			                </Lista>
-			            }
-		            </div>
-		        }		
+		        <div>
+		            { this.state.jugar?
+			            <h1>Juega</h1>
+			        :
+			            <Lista
+			                estado={this.props.estado}
+			            > 
+			            </Lista>
+			        }
+		        </div>
+		        		
 			</div>
 		);
 	}
