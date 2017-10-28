@@ -49,7 +49,7 @@ class App extends Component{
 			        :
 			            <Lista
 			                partidas={this.props.partidas}
-			                crearPartida={() => { this.crearPartida() }}
+			                crearPartida={(tipoL,nombre) => { this.crearPartida(tipoL,nombre) }}
 			            > 
 			            </Lista>
 			        }

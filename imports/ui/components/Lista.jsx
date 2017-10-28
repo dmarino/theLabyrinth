@@ -27,7 +27,7 @@ class Lista extends Component{
     }
 
     crearPartida(){
-    	this.props.crearPartida(1,"yo");
+    	this.props.crearPartida("solo","yo");
     }	
 
 	render(){
