@@ -5,6 +5,8 @@ import { Meteor } from 'meteor/meteor';
 import Search from "./Search.jsx";
 import Partida from "./Partida.jsx";
 
+import "../styles/Lista.css";
+
 class Lista extends Component{
 
 	constructor(props){

@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 
+import "../styles/Partida.css";
+
 class Partida extends Component{
 
     renderImagen(){
@@ -22,7 +24,7 @@ class Partida extends Component{
 
 	render(){
 		return (
-			<div className="partida">
+			<div className="Partida">
 			    {this.renderImagen()}
 			    <div className="infoPartida">
 			        {this.props.partida ?

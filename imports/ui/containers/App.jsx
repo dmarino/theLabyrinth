@@ -15,7 +15,7 @@ class App extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-		    jugar:false,
+		    estado:"inicio",
 		    juegoActual:{}
 		};
 	}
@@ -28,23 +28,30 @@ class App extends Component{
 	        Partidas.insert({
 		        autor: nombre, 
 		        laberinto: laberinto._id,
-		        tipo: tipoL
+		        tipo: tipoL,
 		    });
 
-		    partida = Partidas.find({"autor":this.state.nombre}).fetch()[0];
+		    if(tipoL == "solo"){
+		        partida = Partidas.find({"autor":nombre}).fetch()[0];
+		        partida.laberinto = laberinto;
 
-		    this.setState({
-		        jugar:true,
-		        juegoActual:partida
-		    });
+		        this.setState({
+		            estado:"jugar",
+		            juegoActual: partida
+		        })
+		    }
         }
+    }
+
+    entrarPartida(partida){
+        
     }	
 
 	render(){
 		return (
 			<div id="App">
 		        <div>
-		            { this.state.jugar?
+		            { this.state.estado == "jugar" ?
 			            <h1>Juega</h1>
 			        :
 			            <Lista
