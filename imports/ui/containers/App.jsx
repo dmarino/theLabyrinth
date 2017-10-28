@@ -36,7 +36,7 @@ class App extends Component{
 		            "y":0
 		        }
 		    });
-		    
+
 		    partida = Partidas.find({"autor":nombre}).fetch()[0];
 		    partida.laberinto = laberinto;
 
@@ -59,6 +59,11 @@ class App extends Component{
     }
 
     entrarPartida(partida, nombre){
+
+	    laberinto = Laberintos.find({"_id": partida.laberinto}).fetch()[0],
+
+	    partida.laberinto = laberinto;
+
         if(partida.tipo == "vs"){
             Partidas.update(partida._id, {
                 $set: { 
@@ -70,6 +75,7 @@ class App extends Component{
                 },
             });
         }
+
         else if(partida.tipo == "coop"){
             Partidas.update(partida._id, {
                 $set: { 

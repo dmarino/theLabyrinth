@@ -37,7 +37,7 @@ class Lista extends Component{
     }
 
     crearPartida(){
-    	this.props.crearPartida("vs","yo");
+    	this.props.crearPartida("coop","yo");
     }	
 
     entrarPartida(partida){
