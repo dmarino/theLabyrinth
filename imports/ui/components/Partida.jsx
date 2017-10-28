@@ -7,12 +7,8 @@ import "../styles/Partida.css";
 class Partida extends Component{
 
     renderImagen(){
-
         if(this.props.partida){
-            if(this.props.partida.tipo=="solo"){
-                return (<img src="./images/partidas/solo.png"></img>);
-            }
-            else if(this.props.partida.tipo=="vs"){
+            if(this.props.partida.tipo=="vs"){
                 return (<img src="./images/partidas/vs.png"></img>);
             }            
             else if(this.props.partida.tipo=="coop"){
@@ -24,7 +20,7 @@ class Partida extends Component{
 
 	render(){
 		return (
-			<div className="Partida">
+			<div className="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
 			    {this.renderImagen()}
 			    <div className="infoPartida">
 			        {this.props.partida ?
@@ -40,6 +36,7 @@ class Partida extends Component{
 
 Partida.PropTypes={
     partida: PropTypes.object.isRequired,
+    entrarPartida: PropTypes.func.isRequired,      
 };
 
 export default Partida;

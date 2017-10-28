@@ -6,6 +6,7 @@ import {createContainer} from "meteor/react-meteor-data";
 import "../styles/App.css";
 
 import Lista from "../components/Lista.jsx";
+import Juego from "../components/Juego.jsx";
 
 import {Laberintos} from "../../api/laberintos.js";
 import {Partidas} from "../../api/partidas.js";
@@ -16,7 +17,8 @@ class App extends Component{
 		super(props);
 		this.state={
 		    estado:"inicio",
-		    juegoActual:{}
+		    juegoActual:{},
+		    jugador:0
 		};
 	}
 
@@ -29,34 +31,109 @@ class App extends Component{
 		        autor: nombre, 
 		        laberinto: laberinto._id,
 		        tipo: tipoL,
+		        posJugador1 : {
+		            "x":0,
+		            "y":0
+		        }
 		    });
+		    
+		    partida = Partidas.find({"autor":nombre}).fetch()[0];
+		    partida.laberinto = laberinto;
 
-		    if(tipoL == "solo"){
-		        partida = Partidas.find({"autor":nombre}).fetch()[0];
-		        partida.laberinto = laberinto;
+		    if(tipoL != "vs"){
 
 		        this.setState({
 		            estado:"jugar",
-		            juegoActual: partida
+		            juegoActual: partida,
+		            jugador:1
 		        })
 		    }
+		    else(
+		        this.setState({
+		            estado:"esperar",
+		            juegoActual: partida,
+		            jugador:1		            
+		        })
+		    )
         }
     }
 
-    entrarPartida(partida){
-        
-    }	
+    entrarPartida(partida, nombre){
+        if(partida.tipo == "vs"){
+            Partidas.update(partida._id, {
+                $set: { 
+                    jugador2: nombre,
+                    posJugador2:  {
+		                "x":6,
+		                "y":6
+		            }
+                },
+            });
+        }
+        else if(partida.tipo == "coop"){
+            Partidas.update(partida._id, {
+                $set: { 
+                    jugador2: nombre,
+                    posJugador2: partida.posJugador1
+                },
+            });
+        }
+
+		this.setState({
+		    estado:"jugar",
+		    juegoActual: partida,
+		    jugador:2
+		});
+    }
+
+    terminar(partida){
+        Partidas.remove(partida._id);   
+		this.setState({
+		    estado:"inicio",
+		    juegoActual: {},
+		    jugador:0
+		});         
+    }       	
+
+    mover(partida, jugador, pos){
+        if(jugador==1){
+            Partidas.update(partida._id, {
+                $set: { 
+                    posJugador1:  {
+		                "x":pos.x,
+		                "y":pos.y
+		            }
+                },
+            });
+        }
+        else{
+            Partidas.update(partida._id, {
+                $set: { 
+                    posJugador2:  {
+		                "x":pos.x,
+		                "y":pos.y
+		            }
+                },
+            });      
+        }  
+    }       	
+
 
 	render(){
 		return (
 			<div id="App">
 		        <div>
 		            { this.state.estado == "jugar" ?
-			            <h1>Juega</h1>
+				        <Juego
+			                partida={this.state.juegoActual}
+			                terminar={(partida) => { this.terminar(partida) }}				                
+			            > 
+			            </Juego>
 			        :
 			            <Lista
 			                partidas={this.props.partidas}
 			                crearPartida={(tipoL,nombre) => { this.crearPartida(tipoL,nombre) }}
+			                entrarPartida={(partida,nombre) => { this.entrarPartida(partida,nombre) }}			                
 			            > 
 			            </Lista>
 			        }

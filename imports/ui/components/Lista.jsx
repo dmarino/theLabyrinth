@@ -24,17 +24,25 @@ class Lista extends Component{
 
     renderPartidas(){
         return this.props.partidas.filter(
-        	t => t.autor.startsWith(this.state.busqueda)
+        	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo")
         ).map((t,i)=>{
             return (
-                <Partida key={i} partida={t}/>
+                <Partida 
+                    key={i} 
+                    partida={t}
+                    entrarPartida={(partida) => { this.entrarPartida(partida) }}	
+                />
             );        
         });
     }
 
     crearPartida(){
-    	this.props.crearPartida("solo","no yo");
+    	this.props.crearPartida("vs","yo");
     }	
+
+    entrarPartida(partida){
+    	this.props.entrarPartida(partida,"no yo");
+    }    
 
 	render(){
 		return (
