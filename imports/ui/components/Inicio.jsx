@@ -17,7 +17,7 @@ class Inicio extends Component{
 			        <h1>¡Bienvenido a the labyrinth!</h1>
 			        <p>Este es un juego de laberinto que funciona con la extension chromevox.</p>
 			        <p>Para iniciar haz click en el siguiente link</p>
-			        <a href="/lista">Iniciar</a>
+			        <a href="/inicio">Iniciar</a>
 			    </div>
 			</div>
 		);
@@ -25,7 +25,7 @@ class Inicio extends Component{
 }
 
 Inicio.PropTypes={
-	estado: PropTypes.func.isRequired,
+
 };
 
 export default Inicio;
