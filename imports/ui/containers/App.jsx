@@ -67,7 +67,7 @@ App.PropTypes={
 
 export default createContainer(()=>{
 	return{
-	    laberintos: Laberintos.find({}).fetch(),
+	    laberintos: Laberintos.find({},{ sort: { autor: -1 } }).fetch(),
 	    partidas: Partidas.find({}).fetch(),
 	};
 },App);

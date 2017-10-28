@@ -15,11 +15,15 @@ class Lista extends Component{
 	}
 
 	handleChange = (event) => {
-		console.log(event.target.value);
+		this.setState({
+			busqueda: event.target.value,
+		});
     }
 
     renderPartidas(){
-        return this.props.partidas.map((t,i)=>{
+        return this.props.partidas.filter(
+        	t => t.autor.startsWith(this.state.busqueda)
+        ).map((t,i)=>{
             return (
                 <Partida key={i} partida={t}/>
             );        
@@ -27,7 +31,7 @@ class Lista extends Component{
     }
 
     crearPartida(){
-    	this.props.crearPartida("solo","yo");
+    	this.props.crearPartida("solo","no yo");
     }	
 
 	render(){
