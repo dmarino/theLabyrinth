@@ -9,12 +9,15 @@ html, body{
     overflow-x: hidden;
 }
 
-.Link{
+a{
     color: #fff;
 }
 
-.Link:hover{
+a:hover{
     cursor: pointer;
+}
+a:focus{
+    outline: none;
 }
 
 h1, h2, h3, h4, h5, h6{

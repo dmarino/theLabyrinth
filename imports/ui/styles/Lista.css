@@ -30,8 +30,13 @@
 	text-align: right;
 }
 
-#headerLista a{
-	float: left;
+#lista a{
+	text-decoration: none;
+}
+
+#crearNueva{
+	font-size: 3rem;
+    font-family: "Press Start 2P";  
 }
 
 #headerLista #nombre{

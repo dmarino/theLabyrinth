@@ -20,6 +20,17 @@ class Partida extends Component{
         }
     }
 
+    renderText(){
+        if(this.props.partida){
+            if(this.props.partida.tipo=="vs"){
+            	return "partida de tipo versus creada por " + this.props.partida.autor + ". Para entrar a esta partida presiona enter";
+            }            
+            else if(this.props.partida.tipo=="coop"){
+            	return "partida de tipo cooperativo creada por " + this.props.partida.autor + ". Para entrar a esta partida presiona enter";            	
+            }
+        }    
+    }
+
 	handleKey = (event) => {
 		console.log("yo");
 		if(event.key == 'Enter'){
@@ -28,11 +39,12 @@ class Partida extends Component{
     }
 
 	render(){
+	    label = this.renderText();
 		return (
-			<Link to={{
+			<Link aria-label={label} to={{
 				  pathname: '/juego'
 				}}>
-				<div className="Partida" aria-label="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
+				<div className="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
 				    {this.renderImagen()}
 				    <div className="infoPartida">
 				        {this.props.partida ?

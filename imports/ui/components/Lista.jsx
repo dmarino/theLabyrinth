@@ -57,10 +57,14 @@ class Lista extends Component{
                         <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Nombre Jugador 1" onChange={this.handleChange}></input>               
                     </div> 
 				    <Link 
+                        id ="crearNueva"
+                        aria-label="Crear nueva Partida"
 					    to={{
 				            pathname: '/juego'
 				        }}
-				        onClick={() => { this.crearPartida()}}> Crear Nueva Partida 
+				        onClick={() => { this.crearPartida()}}
+                    > 
+                        <span aria-hidden="true">+</span>
 					</Link>                                                                 
                     <div id="contenidoLista">           
                         {this.renderPartidas()}
