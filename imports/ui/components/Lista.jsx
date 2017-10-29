@@ -49,12 +49,17 @@ class Lista extends Component{
 	render(){
 		return (
 			<div id="lista">
-			    <h2>Partidas Actuales</h2>
-			    <input className="input" type="text" placeholder="Usuario" onChange={this.handleChange}></input>
-			    <a onClick={() => { this.crearPartida()}}>Crear Nueva Partida</a>
-		        <div id="contenidoLista">
-		            {this.renderPartidas()}
-		        </div>
+                <p> Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente por el jugador 1 o seleccionar una partida de la lista de partidas actuales.</p>   
+                <h1>Partidas Actuales</h1>
+                <div id="contenedorLista">
+                    <div id="headerLista">
+                        <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Nombre Jugador 1" onChange={this.handleChange}></input>               
+                    </div> 
+                    <a aria-label="Crear Nueva Partida" onClick={() => { this.crearPartida()}}><h1 aria-hidden="true">+</h1></a>                                                                    
+                    <div id="contenidoLista">           
+                        {this.renderPartidas()}
+                    </div>
+                </div>
 			</div>
 		);
 	}

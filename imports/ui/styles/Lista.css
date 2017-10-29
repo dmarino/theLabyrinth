@@ -1,14 +1,62 @@
 
 #lista{
-	width: 100%;
+	width: 95%;
 	height: 100%;
+	padding-left: 2%;
+	padding-right: 4%;
+    font-family: "Yanone Kaffeesatz";  
+    letter-spacing: 0.2rem;  	
 }
 
+#lista > p{
+	color: #aaa;
+}
+
+#lista > h1{
+	text-align: center;
+	font-size: 3rem; 	
+}
+
+
+#contenedorLista{
+	border-top-color: #aaa;
+	border-top-style: solid;
+	padding-top: 2%;
+	text-align: center;
+}
+
+#headerLista{
+	width: 100%;	
+	text-align: right;
+}
+
+#headerLista a{
+	float: left;
+}
+
+#headerLista #nombre{
+    width: 30%;
+    min-width: 200px;
+    height: 10%;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #aaa;
+    padding-left: 1%;
+    padding-right: 1%;    
+    padding-top: 0.5%;
+    padding-bottom: 0.2%; 
+    font-size: 100%;
+    text-align: right;     
+}
+
+#headerLista #nombre:focus{
+    outline: none;
+}
 
 #contenidoLista{
 	width: 100%;
 	height: 100%;
-	padding-right: 3%;
-	padding-top: 3%;
-	padding-bottom: 3%;
+	padding: auto;
 }
+

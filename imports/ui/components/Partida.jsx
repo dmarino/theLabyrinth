@@ -28,7 +28,7 @@ class Partida extends Component{
 
 	render(){
 		return (
-			<div className="Partida" aria-label="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
+			<div className="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
 			    {this.renderImagen()}
 			    <div className="infoPartida">
 			        {this.props.partida ?

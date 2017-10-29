@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from '../imports/ui/containers/App';
  
 Meteor.startup(() => {
+
+   $('html').attr('lang', 'es');	
   render((
   	<BrowserRouter>
     	<App />
