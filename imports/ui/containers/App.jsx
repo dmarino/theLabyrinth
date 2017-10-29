@@ -36,6 +36,7 @@ class App extends Component{
 					    		partidas={this.props.partidas}
 					    	/>} 
 					    />
+					    <Route path='/juego'/>
 					    <Route path='*' component={NotFound}/>
     				</Switch>
 				</div>

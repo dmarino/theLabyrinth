@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 
 import {createContainer} from "meteor/react-meteor-data";
+import { Switch, Route } from 'react-router-dom'
 
 import "../styles/App.css";
 
@@ -20,6 +21,13 @@ class Principal extends Component{
 		    juegoActual:{},
 		    jugador:0
 		};
+	}
+
+	juego(){
+		window.location.pathname = "/juego";
+	}
+	dejarDeJugar(){
+		window.location.pathname = "/inicio";
 	}
 
 	crearPartida(tipoL, nombre){
@@ -46,7 +54,8 @@ class Principal extends Component{
 		            estado:"jugar",
 		            juegoActual: partida,
 		            jugador:1
-		        })
+		        });
+		        this.juego();
 		    }
 		    else(
 		        this.setState({
