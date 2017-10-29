@@ -11,6 +11,8 @@ import Principal from "../components/Principal.jsx";
 import Navigation from "../components/Navigation.jsx";
 import Inicio from "../components/Inicio.jsx";
 import NotFound from "../components/NotFound.jsx";
+
+
 import {Laberintos} from "../../api/laberintos.js";
 import {Partidas} from "../../api/partidas.js";
 
@@ -29,8 +31,7 @@ class App extends Component{
         if(this.props.laberintos.length!=0){
 
 	        laberinto = this.props.laberintos[Math.floor(Math.random()*(this.props.laberintos.length-1))]
-
-	        Partidas.insert({
+	        /*Partidas.insert({
 		        autor: nombre, 
 		        laberinto: laberinto._id,
 		        tipo: tipoL,
@@ -38,7 +39,17 @@ class App extends Component{
 		            "x":0,
 		            "y":0
 		        }
-		    });
+		    });*/
+		    datosForServer={
+		    	autor: nombre, 
+		        laberinto: laberinto._id,
+		        tipo: tipoL,
+		        posJugador1 : {
+		            "x":0,
+		            "y":0
+		        }
+		    };
+		    Meteor.call("partidas.insertar",datosForServer);
 
 		    partida = Partidas.find({"autor":nombre}).fetch()[0];
 		    partida.laberinto = laberinto;
@@ -66,8 +77,13 @@ class App extends Component{
 
 	    partida.laberinto = laberinto;
 
+	    ubicacion={};
         if(partida.tipo == "vs"){
-            Partidas.update(partida._id, {
+        	ubicacion={
+		                "x":6,
+		                "y":6
+		            }
+            /*Partidas.update(partida._id, {
                 $set: { 
                     jugador2: nombre,
                     posJugador2:  {
@@ -75,18 +91,25 @@ class App extends Component{
 		                "y":6
 		            }
                 },
-            });
+            });*/
         }
-
-        else if(partida.tipo == "coop"){
-            Partidas.update(partida._id, {
+        else{
+        	ubicacion = partida.posJugador1;
+            /*Partidas.update(partida._id, {
                 $set: { 
                     jugador2: nombre,
                     posJugador2: partida.posJugador1
                 },
-            });
+            });*/
         }
 
+        datosForServer={
+        	jugador2: nombre,
+        	posJugador2:ubicacion
+
+        };
+
+        Meteor.call("partidas.update", partida._id,datosForServer);
 		this.setState({
 		    estado:"jugar",
 		    juegoActual: partida,
@@ -95,7 +118,7 @@ class App extends Component{
     }
 
     terminar(partida){
-        Partidas.remove(partida._id);   
+    	Meteor.call("partidas.remove", partida._id);
 		this.setState({
 		    juegoActual: {}
 		});         
@@ -136,6 +159,8 @@ App.PropTypes={
 };
 
 export default createContainer(()=>{
+	Meteor.subscribe('laberintos');
+	Meteor.subscribe('partidas');
 	return{
 	    laberintos: Laberintos.find({},{ sort: { autor: -1 } }).fetch(),
 	    partidas: Partidas.find({}).fetch(),
