@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 
-import Search from "./Search.jsx";
 import Partida from "./Partida.jsx";
+import ModalPartida from "./ModalPartida.jsx";
 
 import "../styles/Lista.css";
 
@@ -13,7 +13,10 @@ class Lista extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-		    busqueda:""
+		    busqueda:"",
+            modal:false,
+            tipoModal:"",
+            partida:{}
 		}
 	}
 
@@ -33,37 +36,65 @@ class Lista extends Component{
                 <Partida 
                     key={i} 
                     partida={t}
-                    entrarPartida={(partida) => { this.entrarPartida(partida) }}	
+                    abrirModalEntrarPartida={(partida) => { this.abrirModalEntrarPartida(partida) }}	
                 />
             );        
         });
     }
 
-    crearPartida(){
-    	this.props.crearPartida("coop","yo");
+    abrirModalCrearPartida(){
+        this.setState({
+            modal:true,
+            tipoModal:"crear"
+        })
+    }   
+
+    abrirModalEntrarPartida(partidaP){
+        this.setState({
+            modal:true,
+            tipoModal:"entrar",
+            partida: partidaP
+        })
+    }      
+
+    crearPartida(tipoL, alias){
+    	this.props.crearPartida(tipoL,alias);
+        this.setState({
+            modal:false,
+            tipoModal:""
+        })
     }	
 
-    entrarPartida(partida){
-    	this.props.entrarPartida(partida,"no yo");
+    entrarPartida(partida, alias){
+    	this.props.entrarPartida(partida,alias);
     }    
 
 	render(){
 		return (
 			<div id="lista">
-                <p> Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente por el jugador 1 o seleccionar una partida de la lista de partidas actuales.</p>   
+                {this.state.modal ?
+                    <ModalPartida
+                        estado={this.state.tipoModal}
+                        crearPartida={(tipoL,alias) => { this.crearPartida(tipoL,alias) }}
+                        entrarPartida={(partida,alias) => { this.entrarPartida(partida,alias) }}  
+                        partida={this.state.partida}
+                    >
+                    </ModalPartida>
+                :
+                    null
+                }
+                <p> Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente o seleccionar una partida de la lista de partidas actuales.</p>   
                 <h1>Partidas Actuales</h1>
                 <div id="contenedorLista">
                     <div id="headerLista">
-                        <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Nombre Jugador 1" onChange={this.handleChange}></input>               
+                        <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Jugador 1" onChange={this.handleChange}></input>               
                     </div> 
-				    <Link 
+				    <Link
                         id ="crearNueva"
-                        aria-label="Crear nueva Partida"
-					    to={{
-				            pathname: '/juego'
-				        }}
-				        onClick={() => { this.crearPartida()}}
-                    > 
+                        to={{
+                            pathname: '/inicio'
+                        }}
+                        onClick={() => { this.abrirModalCrearPartida()}}> 
                         <span aria-hidden="true">+</span>
 					</Link>                                                                 
                     <div id="contenidoLista">           

@@ -31,24 +31,17 @@ class Partida extends Component{
         }    
     }
 
-	handleKey = (event) => {
-		console.log("yo");
-		if(event.key == 'Enter'){
-			this.props.entrarPartida(this.props.partida);
-        }
-    }
-
 	render(){
 	    label = this.renderText();
 		return (
 			<Link aria-label={label} to={{
-				  pathname: '/juego'
+				  pathname: '/inicio'
 				}}>
-				<div className="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
+				<div className="Partida" onClick = {() => { this.props.abrirModalEntrarPartida(this.props.partida)}}>
 				    {this.renderImagen()}
 				    <div className="infoPartida">
 				        {this.props.partida ?
-				            <p>Autor: {this.props.partida.autor}</p>
+				            <p>Jugador 1: {this.props.partida.autor}</p>
 				        :
 				            null
 				        }
@@ -61,7 +54,7 @@ class Partida extends Component{
 
 Partida.PropTypes={
     partida: PropTypes.object.isRequired,
-    entrarPartida: PropTypes.func.isRequired,      
+    abrirModalEntrarPartida: PropTypes.func.isRequired,      
 };
 
 export default Partida;
