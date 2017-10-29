@@ -12,6 +12,10 @@
 	color: #aaa;
 }
 
+p:focus{
+	color: #f0f;
+}
+
 #lista > h1{
 	text-align: center;
 	font-size: 3rem; 	

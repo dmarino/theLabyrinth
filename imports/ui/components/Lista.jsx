@@ -20,6 +20,10 @@ class Lista extends Component{
 		}
 	}
 
+    componentDidMount(){
+        console.log(this.primero);
+        this.primero.focus();
+    }
 	handleChange = (event) => {
 		this.setState({
 			busqueda: event.target.value,
@@ -83,7 +87,7 @@ class Lista extends Component{
                 :
                     null
                 }
-                <p> Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente o seleccionar una partida de la lista de partidas actuales.</p>   
+                <p ref={(p) => { this.primero = p; }} > Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente o seleccionar una partida de la lista de partidas actuales.</p>   
                 <h1>Partidas Actuales</h1>
                 <div id="contenedorLista">
                     <div id="headerLista">
@@ -91,6 +95,7 @@ class Lista extends Component{
                     </div> 
 				    <Link
                         id ="crearNueva"
+                        aria-label="Crear nueva Partida"                        
                         to={{
                             pathname: '/inicio'
                         }}

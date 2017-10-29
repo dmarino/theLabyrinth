@@ -11,7 +11,7 @@ class ModalPartida extends Component{
 		super(props);
 		this.state = {
 			alias:"",
-			tipo:"solo"
+			tipo:"coop"
 		};
 	}
 
@@ -42,15 +42,16 @@ class ModalPartida extends Component{
 			<div className="modalPartida">
 				{this.props.estado == "crear" ?
 					<div className="modalContent">
-			            <p>Antes de crear la partida debes seleccionar el tipo de partida y el nombre con el que vas a entrar a ella.</p>
-			            <input id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
-			            <select id="tipo" onChange={this.handleChangeDos}>		
-                            <option value="coop">Cooperativo</option>
+					    <h1>Crear Partida</h1>
+			            <p className="itemModal">Antes de crear la partida debes seleccionar el tipo de partida y el nombre con el que vas a entrar a ella.</p>
+			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
+			            <select  className="itemModal" aria-label="Tipo de partida" id="tipo" onChange={this.handleChangeDos}>		
+                            <option value="coop" selected >Cooperativo</option>
                             <option value="vs">Versus</option>
-                            <option value="solo" selected >Solo</option>
+                            <option value="solo">Solo</option>
 				        </select>
 				        <Link 
-				            className="boton"
+				            className="itemModal" id="boton"
                             aria-label="Crear nueva Partida"
 					        to={{
 				                pathname: '/juego'
@@ -62,9 +63,9 @@ class ModalPartida extends Component{
                     </div>            
 				:
 					<div className="modalContent">
-			            <p>Para entrar a la partida de {this.props.partida.autor} primero escoge un alias</p>
-			            <input id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
-			            <Link aria-label="Entrar a partida" to={{
+			            <p  className="itemModal" >Para entrar a la partida de {this.props.partida.autor} primero escoge un alias</p>
+			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
+			            <Link  className="itemModal" aria-label="Entrar a partida" to={{
 				            pathname: '/juego'}}
 				            onClick = {() => { this.entrarPartida()}}
 				        >

@@ -11,6 +11,10 @@ class Inicio extends Component{
 		super(props);
 	}
 
+    componentWillUnmount(){
+        
+    }
+
 	render(){
 		return (
 			<div className="modal">

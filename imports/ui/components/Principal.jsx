@@ -14,9 +14,7 @@ class Principal extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-		    estado:"inicio",
-		    juegoActual:{},
-		    jugador:0
+		    estado:"inicio"
 		};
 	}
 
@@ -34,7 +32,6 @@ class Principal extends Component{
 		        <div>
 			        <Lista
 			            partidas={this.props.partidas}
-			            partidaActual={this.props.partidaActual}
 		                crearPartida={(tipoL,nombre) => { this.crearPartida(tipoL,nombre) }}
 			            entrarPartida={(partida,nombre) => { this.entrarPartida(partida,nombre) }}			                
 	                > 
