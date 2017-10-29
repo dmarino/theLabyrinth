@@ -18,7 +18,7 @@ class Inicio extends Component{
 			        <h1>¡BIENVENIDO A THE LABYRINTH!</h1>
 			        <p>Este es un juego de laberinto que funciona con la extension chromevox</p>
 			        <p>Para iniciar haz click en el siguiente link</p>
-			        <Link to={{
+			        <Link  aria-label="Entrar al laberinto" to={{
 					  pathname: '/inicio'
 					}}> <img src="./images/seleccion.png" alt=""></img> <span> Entrar al laberinto </span> </Link>
 			    </div>

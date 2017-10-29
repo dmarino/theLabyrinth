@@ -9,7 +9,11 @@ html, body{
     overflow-x: hidden;
 }
 
-a:hover{
+.Link{
+    color: #fff;
+}
+
+.Link:hover{
     cursor: pointer;
 }
 
