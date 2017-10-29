@@ -2,9 +2,10 @@ html, body{
 	margin: 0;
 	padding: 0;
     background-color: #000;
-    width: 100%;
+    width: 99%;
     height: 100%;
     color: #fff;
+    font-family: "Yanone Kaffeesatz";
 }
 
 #render-target{
