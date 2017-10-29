@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import {createContainer} from "meteor/react-meteor-data";
 
@@ -23,12 +23,6 @@ class App extends Component{
 		    juegoActual:{},
 		    jugador:0
 		};
-	}
-
-	componentDidUpdate(){
-	    if(this.state.juegoActual.laberinto){
-	        this.juego();
-	    }
 	}
 
 	crearPartida(tipoL, nombre){
@@ -106,13 +100,6 @@ class App extends Component{
 		    juegoActual: {}
 		});         
     }  
-
-	juego(){
-		window.location.pathname = "/juego";
-	}
-	dejarDeJugar(){
-		window.location.pathname = "/inicio";
-	}
 	
 	render(){
 		return(
@@ -124,16 +111,17 @@ class App extends Component{
 				    	<Principal {...routeProps} 
 				    		laberintos={this.props.laberintos} 
 				    		partidas={this.props.partidas}
+				    		partidaActual={this.state.partidaActual}
                             crearPartida={(tipoL,nombre) => { this.crearPartida(tipoL,nombre) }}
 			                entrarPartida={(partida,nombre) => { this.entrarPartida(partida,nombre) }}						    		
 				    	/>} 
 				    />
 					<Route path='/juego' render={routeProps => 
-				    	<Juego {...routeProps} 
-				    		partida={this.state.juegoActual} 
-			                terminar={(partida) => { this.terminar(partida) }}						    		
-				    	/>} 
-				    />
+ 				    	<Juego {...routeProps} 
+ 				    		partida={this.state.juegoActual} 
+ 			                terminar={(partida) => { this.terminar(partida) }}						    		
+ 				    	/>} 
+ 				    />
 				    <Route path='*' component={NotFound}/>
     			</Switch>
 			</div>

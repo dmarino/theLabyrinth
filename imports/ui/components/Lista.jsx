@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 
 import Search from "./Search.jsx";
 import Partida from "./Partida.jsx";
@@ -55,7 +56,12 @@ class Lista extends Component{
                     <div id="headerLista">
                         <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Nombre Jugador 1" onChange={this.handleChange}></input>               
                     </div> 
-                    <a aria-label="Crear Nueva Partida" onClick={() => { this.crearPartida()}}><h1 aria-hidden="true">+</h1></a>                                                                    
+				    <Link 
+					    to={{
+				            pathname: '/juego'
+				        }}
+				        onClick={() => { this.crearPartida()}}> Crear Nueva Partida 
+					</Link>                                                                 
                     <div id="contenidoLista">           
                         {this.renderPartidas()}
                     </div>
