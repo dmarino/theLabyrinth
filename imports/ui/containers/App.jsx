@@ -30,8 +30,13 @@ class App extends Component{
 					<Navigation></Navigation>
 					<Switch>
 					    <Route exact path='/' component={Inicio}/>
-					    <Route path='/inicio' component={Principal} laberintos={this.props.laberitos} partidas={this.props.partidas}/>
-      					<Route path='*' component={NotFound}/>
+					    <Route path='/inicio' render={routeProps => 
+					    	<Principal {...routeProps} 
+					    		laberintos={this.props.laberintos} 
+					    		partidas={this.props.partidas}
+					    	/>} 
+					    />
+					    <Route path='*' component={NotFound}/>
     				</Switch>
 				</div>
 			);
