@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Cuadro from "./Cuadro.jsx";
 
@@ -28,13 +28,13 @@ class Juego extends Component{
 		return (
 			<div className="Juego">
 			    <h1>Juega</h1>
-			    {this.props.partida?
+			    {(this.props.partida!== undefined && this.props.partida.tipo !== undefined)?
 			        <Link to={{
                       pathname: '/inicio'
                     }}><button onClick = {() => { this.props.terminar(this.props.partida)}}> Salir </button>
                     </Link>
 			    :
-                    null
+                    <Redirect to="/Unexistent Game"></Redirect>
 			    }
 			    <div id="tablero">
 			        {this.renderJuego()}
