@@ -9,18 +9,26 @@ class Partida extends Component{
     renderImagen(){
         if(this.props.partida){
             if(this.props.partida.tipo=="vs"){
-                return (<img src="./images/partidas/vs.png"></img>);
+            	alternative = "partida de tipo versus creada por " + this.props.partida.autor + ". Para entrar a esta partida presiona enter";
+                return (<img src="./images/partidas/vs.png" alt={alternative}></img>);
             }            
             else if(this.props.partida.tipo=="coop"){
-                return (<img src="./images/partidas/coop.png"></img>);
+            	alternative = "partida de tipo cooperativo creada por " + this.props.partida.autor + ". Para entrar a esta partida presiona enter";            	
+                return (<img src="./images/partidas/coop.png" alt={alternative}></img>);
             }
         }
     }
 
+	handleKey = (event) => {
+		console.log("yo");
+		if(event.key == 'Enter'){
+			this.props.entrarPartida(this.props.partida);
+        }
+    }
 
 	render(){
 		return (
-			<div className="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
+			<div className="Partida" aria-label="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
 			    {this.renderImagen()}
 			    <div className="infoPartida">
 			        {this.props.partida ?

@@ -17,7 +17,7 @@ class Inicio extends Component{
 			        <h1>¡Bienvenido a the labyrinth!</h1>
 			        <p>Este es un juego de laberinto que funciona con la extension chromevox.</p>
 			        <p>Para iniciar haz click en el siguiente link</p>
-			        <a href="/inicio">Iniciar</a>
+			        <a href="/inicio">Entrar al laberinto</a>
 			    </div>
 			</div>
 		);
