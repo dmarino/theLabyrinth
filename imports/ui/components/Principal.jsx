@@ -9,9 +9,6 @@ import "../styles/App.css";
 import Lista from "../components/Lista.jsx";
 import Juego from "../components/Juego.jsx";
 
-import {Laberintos} from "../../api/laberintos.js";
-import {Partidas} from "../../api/partidas.js";
-
 class Principal extends Component{
 
 	constructor(props){
