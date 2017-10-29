@@ -23,6 +23,8 @@ class Lista extends Component{
     }
 
     renderPartidas(){
+    	if(this.props.partidas === undefined)
+    		return (<div>No hay partidas</div>);
         return this.props.partidas.filter(
         	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo")
         ).map((t,i)=>{
