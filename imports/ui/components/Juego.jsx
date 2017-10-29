@@ -11,17 +11,20 @@ class Juego extends Component{
     }
 
     renderJuego(){
-    	return this.props.partida.laberinto.layout.map((t,i)=>{
-            return (
-                <Cuadro 
-                    key={i}
-                    cuadro ={t}
-                />
-            );        
-        });
+        if(this.props.partida.laberinto){
+            return this.props.partida.laberinto.layout.map((t,i)=>{
+                return (
+                    <Cuadro 
+                        key={i}
+                        cuadro ={t}
+                    />
+                );        
+            });
+        }
     }
 
 	render(){
+        console.log(this.props.partida);
 		return (
 			<div className="Juego">
 			    <h1>Juega</h1>

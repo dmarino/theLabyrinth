@@ -14,7 +14,6 @@ class Navigation extends Component{
 		return (
 			<div className="Navigation">
 				<div className="NavigationContent">
-			        <h1>¡Bienvenido a the labyrinth!</h1>
 			    </div>
 			</div>
 		);
