@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 
 import Cuadro from "./Cuadro.jsx";
 
@@ -24,12 +25,14 @@ class Juego extends Component{
     }
 
 	render(){
-        console.log(this.props.partida);
 		return (
 			<div className="Juego">
 			    <h1>Juega</h1>
 			    {this.props.partida?
-			        <button onClick = {() => { this.props.terminar(this.props.partida)}}> Salir </button>
+			        <Link to={{
+                      pathname: '/inicio'
+                    }}><button onClick = {() => { this.props.terminar(this.props.partida)}}> Salir </button>
+                    </Link>
 			    :
                     null
 			    }

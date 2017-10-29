@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 
 import "../styles/Partida.css";
 
@@ -28,16 +29,20 @@ class Partida extends Component{
 
 	render(){
 		return (
-			<div className="Partida" aria-label="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
-			    {this.renderImagen()}
-			    <div className="infoPartida">
-			        {this.props.partida ?
-			            <p>Autor: {this.props.partida.autor}</p>
-			        :
-			            null
-			        }
-			    </div>
-			</div>
+			<Link to={{
+				  pathname: '/juego'
+				}}>
+				<div className="Partida" aria-label="Partida" onClick = {() => { this.props.entrarPartida(this.props.partida)}}>
+				    {this.renderImagen()}
+				    <div className="infoPartida">
+				        {this.props.partida ?
+				            <p>Autor: {this.props.partida.autor}</p>
+				        :
+				            null
+				        }
+				    </div>
+				</div>
+			</Link>
 		);
 	}
 }
