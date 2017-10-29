@@ -24,7 +24,6 @@ class Principal extends Component{
 	}
 
 	crearPartida(tipoL, nombre){
-	    console.log(tipoL)
 	    this.props.crearPartida(tipoL, nombre);
     }
 

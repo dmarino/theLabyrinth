@@ -25,6 +25,12 @@ class App extends Component{
 		};
 	}
 
+	componentDidUpdate(){
+	    if(this.state.juegoActual.laberinto){
+	        this.juego();
+	    }
+	}
+
 	crearPartida(tipoL, nombre){
         if(this.props.laberintos.length!=0){
 
@@ -50,7 +56,6 @@ class App extends Component{
 		            juegoActual: partida,
 		            jugador:1
 		        });
-		        this.juego();
 		    }
 		    else(
 		        this.setState({
@@ -63,7 +68,7 @@ class App extends Component{
     }
 
     entrarPartida(partida, nombre){
-	    laberinto = Laberintos.find({"_id": partida.laberinto}).fetch()[0],
+	    laberinto = Laberintos.find({"_id": partida.laberinto}).fetch()[0];
 
 	    partida.laberinto = laberinto;
 
@@ -93,8 +98,6 @@ class App extends Component{
 		    juegoActual: partida,
 		    jugador:2
 		});
-		
-		this.juego();
     }
 
     terminar(partida){
