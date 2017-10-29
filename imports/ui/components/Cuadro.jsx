@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 
+import "../styles/Cuadro.css";
+
 class Cuadro extends Component{
 
     renderImagen(){
