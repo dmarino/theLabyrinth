@@ -99,16 +99,10 @@ class App extends Component{
 
         partida.jugador2 = nombre;
 
-	    ubicacion={};
-        if(partida.tipo == "vs"){
-        	ubicacion={
-		                "x":6,
-		                "y":6
-		            }            
-        }
-        else{
-        	ubicacion = partida.posJugador1;
-        }
+        ubicacion={
+	        "x":0,
+            "y":0
+	    }   
 		
 		partida.posJugador2 = ubicacion;   
 

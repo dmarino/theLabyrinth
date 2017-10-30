@@ -219,16 +219,35 @@ p:focus{
 .Juego{
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 .Juego #contenedor{
-  padding-right: 20%;
-  padding-left: 20%;
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .Juego > h1{
   text-align: center;
     font-size: 3rem;    
+}
+
+#infoJuego{
+  width: 70%;
+  text-align: center;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+#infoJuego #jugador2{
+  float: right;
+
+}
+
+#tablero{
+  margin-top: 2%;
+  border-color: #fff;
+  border-style: solid;
 }
 
 /*Inicio*/
