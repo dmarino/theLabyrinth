@@ -29,15 +29,8 @@ class ModalPartida extends Component{
     	}
     }
 
-	handleChangeDos = (event) => {
-		this.setState({
-			tipo: event.target.value,
-		});
-    }
-
-
-    crearPartida(){
-		this.props.crearPartida(this.state.tipo,this.state.alias);
+    crearPartida(tipoL){
+		this.props.crearPartida(tipoL,this.state.alias);
     }	
 
     entrarPartida(){
@@ -55,20 +48,40 @@ class ModalPartida extends Component{
 			            <p className="itemModal">Antes de crear la partida debes seleccionar el tipo de partida y el nombre con el que vas a entrar a ella.</p>
 			            <p>{this.state.text}</p>
 			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
-			            <select  className="itemModal" aria-label="Tipo de partida" id="tipo" onChange={this.handleChangeDos} defaultValue="coop">		
-                            <option value="coop">Cooperativo</option>
-                            <option value="vs">Versus</option>
-                            <option value="solo">Solo</option>
-				        </select>
-				        {this.state.alias!==""? <Link 
-				            className="itemModal" id="boton"
-                            aria-label="Crear nueva Partida"
-					        to={{
-				                pathname: '/juego'
-				            }}
-				            onClick={() => { this.crearPartida()}}>
-                        Crear Partida
-			            </Link>: null}                         		
+				        {this.state.alias!==""? 
+				            <div className="itemModal" id="links">
+				                <Link 
+				                    className="link" 
+                                    aria-label="Crear nueva Partida cooperativa"
+					                to={{
+				                        pathname: '/juego'
+				                    }}
+				                    onClick={() => { this.crearPartida("coop")}}
+				                >
+                                Coop
+			                    </Link>
+				                <Link 
+				                    className="link" 
+                                    aria-label="Crear nueva Partida versus"
+					                to={{
+				                        pathname: '/juego'
+				                    }}
+				                    onClick={() => { this.crearPartida("vs")}}
+				                >
+                                Vs
+			                    </Link>	
+				                <Link 
+				                    className="link"
+                                    aria-label="Crear nueva Partida solo"
+					                to={{
+				                        pathname: '/juego'
+				                    }}
+				                    onClick={() => { this.crearPartida("solo")}}
+				                >
+                                Solo
+			                    </Link>
+				            </div>
+				            : null}                         		
                     </div>            
 				:
 					<div className="modalContent">
