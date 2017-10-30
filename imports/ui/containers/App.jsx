@@ -33,9 +33,17 @@ class App extends Component{
 		if(this.state.juegoActual._id!== undefined){
 			juegos.map((t)=>{
 				if(t._id === this.state.juegoActual._id){
-					setState({juegoActual:t});
+					actual = this.state.juegoActual;
+					if(actual.posJugador2=== undefined && t.posJugador2!==undefined){
+						this.setState({juegoActual:t});
+					}
+					else if(actual.posJugador2 !== undefined && (actual.posJugador2.x !== t.posJugador2.x || actual.posJugador2.y !== t.posJugador2.y)){
+						this.setState({juegoActual:t});
+					}
+					else if(actual.posJugador1.x !== t.posJugador1.x || actual.posJugador1.y !== t.posJugador1.y){
+						this.setState({juegoActual:t});
+					}
 				}
-				console.log(t);
 			});
 		}
 	}
