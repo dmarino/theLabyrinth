@@ -46,7 +46,15 @@ Meteor.methods({
             $set: datos
         });
 	},
-
+	"partidas.updateGanador"(id, datos){
+		check(id, String);
+		check(datos,{
+			"ganador":Number,
+		});
+		Partidas.update(id, {
+            $set: datos
+        });
+	},
 	"partidas.update"(id, player, datos){
 		check(id, String);
 		check(player, Number);

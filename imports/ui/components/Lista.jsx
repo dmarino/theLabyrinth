@@ -28,7 +28,7 @@ class Lista extends Component{
     	if(this.props.partidas === undefined)
     		return (<div>No hay partidas</div>);
         return this.props.partidas.filter(
-        	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo" && !t.jugador2)
+        	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo" && t.jugador2===undefined)
         ).map((t,i)=>{
             return (
                 <Partida 

@@ -52,15 +52,6 @@ class App extends Component{
         if(this.props.laberintos.length!=0){
 
 	        laberinto = this.props.laberintos[Math.floor(Math.random()*(this.props.laberintos.length-1))]
-	        /*Partidas.insert({
-		        autor: nombre, 
-		        laberinto: laberinto._id,
-		        tipo: tipoL,
-		        posJugador1 : {
-		            "x":0,
-		            "y":0¿
-		        }
-		    });*/
 		    datosForServer={
 		    	autor: nombre, 
 		        laberinto: laberinto,
@@ -135,10 +126,10 @@ class App extends Component{
 		});
     }
 
-    terminar(partida, ganador, modo){
-    	if(ganador===0){
+    terminar(partida, ganadorT){
+    	if(ganadorT===0){
     		if(this.state.jugador===1 && partida.posJugador2!==undefined){
-    			alert("No puede abandonar teniendo un invitado");
+//    			alert("No puede abandonar teniendo un invitado");
     		}
     		else if(this.state.jugador===2){
     			datosForServer={
@@ -163,19 +154,17 @@ class App extends Component{
     		}
     	}
     	else{
-    		if(modo === "Coop"){
-    			Meteor.call("partidas.remove", partida._id);
-				this.setState({
-				    juegoActual: {}
-				});
-				   
+    		if(partida.tipo === "coop"){
+    			datosForServer={
+		        	ganador: 3
+		        };	        
     		}
     		else{
-    			Meteor.call("partidas.remove", partida._id);
-				this.setState({
-				    juegoActual: {}
-				});
+    			datosForServer={
+		        	ganador: ganadorT
+		        };
     		}
+		    Meteor.call("partidas.updateGanador", partida._id,datosForServer);		    		
     	}         
     }  
 	
@@ -199,7 +188,7 @@ class App extends Component{
  				    		partida={this.state.juegoActual} 
  				    		jugador={this.state.jugador}
 			                mover={(partida, jugador, pos) => { this.mover(partida, jugador, pos) }}	 				    		
- 			                terminar={(partida) => { this.terminar(partida) }}						    		
+ 			                terminar={(partida, ganador) => { this.terminar(partida, ganador) }}						    		
  				    	/>} 
  				    />
 				    <Route path='*' component={NotFound}/>

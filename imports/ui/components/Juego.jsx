@@ -13,8 +13,11 @@ class Juego extends Component{
             filas:[0,1,2,3,4,5,6],
             posActual:{}
         }
-    }    
+    } 
 
+    componentWillUnmount(){
+        this.props.terminar(this.props.partida,0);
+    }
     mover(cuadro){
         cambiar=false;
         if(this.state.posActual.x === undefined){
@@ -49,8 +52,8 @@ class Juego extends Component{
                 posActual:cuadro
             });
             if(cuadro.x===3 && cuadro.y===3){
-                alert("Ganaste! :D");
-                this.props.terminar(this.props.partida);
+                alert("has ganado");
+                this.props.terminar(this.props.partida, this.props.jugador);
             }
         }      
     }
