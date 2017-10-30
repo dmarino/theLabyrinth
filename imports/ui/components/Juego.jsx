@@ -17,7 +17,6 @@ class Juego extends Component{
 
     mover(cuadro){
         cambiar=false;
-        console.log(this.state.posActual);
         if(this.state.posActual.x === undefined){
             if((cuadro.x==1 && cuadro.y==0)&& this.props.partida.laberinto.layout[0].derecha==0){
                 cambiar=true;
