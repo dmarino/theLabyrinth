@@ -30,10 +30,10 @@ class App extends Component{
 
 	componentWillUpdate(newProps){
 		juegos = newProps.partidas;
-		if(juegoActual._id!== undefined){
+		if(this.state.juegoActual._id!== undefined){
 			juegos.map((t)=>{
-				if(t._id === juegoActual._id){
-					juegoActual=t;
+				if(t._id === this.state.juegoActual._id){
+					setState({juegoActual:t});
 				}
 				console.log(t);
 			});
