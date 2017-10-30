@@ -56,8 +56,7 @@ class ModalPartida extends Component{
 					        to={{
 				                pathname: '/juego'
 				            }}
-				            onClick={() => { this.crearPartida()}}
-                        >
+				            onClick={() => { this.crearPartida()}}>
                         Crear Partida
 			            </Link>                         		
                     </div>            

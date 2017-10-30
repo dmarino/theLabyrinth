@@ -77,8 +77,7 @@ class Lista extends Component{
                         estado={this.state.tipoModal}
                         crearPartida={(tipoL,alias) => { this.crearPartida(tipoL,alias) }}
                         entrarPartida={(partida,alias) => { this.entrarPartida(partida,alias) }}  
-                        partida={this.state.partida}
-                    >
+                        partida={this.state.partida}>
                     </ModalPartida>
                 :
                     null
