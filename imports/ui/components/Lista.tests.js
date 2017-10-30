@@ -3,11 +3,11 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { shallow } from "enzyme";
 import React from "react";
 
-import Inicio from "./Inicio.jsx";
+import Lista from "./Lista.jsx";
 
-describe("Inicio", () => {
+describe("Lista", () => {
   it("should render", () => {
-    const inicio = shallow(<Inicio/>); 
-    assert.equal(inicio.find("Link").length, 1);
+    const lista = shallow(<Lista/>); 
+    assert.equal(lista.find("Link").length, 1);
   });
 });

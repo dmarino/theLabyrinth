@@ -3,11 +3,11 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { shallow } from "enzyme";
 import React from "react";
 
-import Inicio from "./Inicio.jsx";
+import Cuadro from "./Cuadro.jsx";
 
-describe("Inicio", () => {
+describe("Cuadro", () => {
   it("should render", () => {
-    const inicio = shallow(<Inicio/>); 
-    assert.equal(inicio.find("Link").length, 1);
+    const cuadro = shallow(<Cuadro/>); 
+    assert.equal(cuadro.find("img").length, 1);
   });
 });

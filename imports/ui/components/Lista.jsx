@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import Partida from "./Partida.jsx";
 import ModalPartida from "./ModalPartida.jsx";
 
-import "../styles/Lista.css";
-
 class Lista extends Component{
 
 	constructor(props){

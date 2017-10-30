@@ -1,3 +1,4 @@
+/*App*/
 html, body{
 	margin: 0;
 	padding: 0;
@@ -41,6 +42,229 @@ h1, h2, h3, h4, h5, h6{
 }
 
 #App > div{
+    width: 100%;
+    height: 100%;
+}
+
+/*Partida*/
+.Partida {
+    box-shadow: 2px 6px 10px 2px rgba(255,255,255,0.2);
+    transition: 0.3s
+    border-radius: 25px;
+    display: inline-block;  
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 0.5%;
+}
+
+.Partida:hover{
+    box-shadow: 0 8px 16px 0 rgba(255,255,255,0.7);
+}
+
+.Partida .infoPartida {
+    max-width: 350px;
+    text-align: center;
+}
+
+/*Modal Partida*/
+.modalPartida{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  height: 100%;
+  width: 100%;
+}
+
+.modalPartida .modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  border: 1px solid #fff;
+  border-radius: 25px;    
+  width: 50%;
+  height: 30%;
+  padding-left: 20px;
+  text-align: center;
+}
+
+.modalPartida .modalContent .itemModal{
+  display: block;
+    
+}
+
+#alias {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 1rem;
+  left: 50%;
+  width: 90%
+  padding: 10px 0px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  text-align: left;
+
+}
+
+#alias:focus{
+    outline: none;
+}
+
+
+/*Lista*/
+#lista{
+    width: 95%;
+    height: 100%;
+    padding-left: 2%;
+    padding-right: 4%;
+    font-family: "Yanone Kaffeesatz";  
+    letter-spacing: 0.2rem;     
+}
+
+#lista > p{
+    color: #aaa;
+}
+
+p:focus{
+    color: #f0f;
+}
+
+#lista > h1{
+    text-align: center;
+    font-size: 3rem;    
+}
+
+#contenedorLista{
+    border-top-color: #aaa;
+    border-top-style: solid;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#headerLista{
+    width: 100%;    
+    text-align: right;
+}
+
+#lista a{
+    text-decoration: none;
+}
+
+#crearNueva{
+    font-size: 3rem;
+    font-family: "Press Start 2P";  
+}
+
+#headerLista #nombre{
+    width: 30%;
+    min-width: 200px;
+    height: 10%;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #aaa;
+    padding-left: 1%;
+    padding-right: 1%;    
+    padding-top: 0.5%;
+    padding-bottom: 0.2%; 
+    font-size: 100%;
+    text-align: right;     
+}
+
+#headerLista #nombre:focus{
+    outline: none;
+}
+
+#contenidoLista{
+    width: 100%;
+    height: 100%;
+    padding: auto;
+}
+
+/*Lista*/
+.Juego{
+    width: 100%;
+    height: 100%;
+}
+
+#tablero{
+    width: 100%;
+}
+
+/*Inicio*/
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    background-image: url("./images/inicio.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left bottom;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+
+.modal .modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  color: white;
+  font-size: 1.4vw; 
+  text-align: right;     
+}
+
+.modal .modalContent h1{
+  font-size: 3.2vw;
+  text-align: center;   
+  margin-bottom: 6%;
+}
+
+.modal .modalContent p{
+    letter-spacing: 0.2vw;
+}
+
+.modal .modalContent a{
+  color: #fff;
+  letter-spacing: 0.2vw; 
+  margin-top: 4%;
+}
+
+.modal .modalContent a img{
+  display: none;
+}
+
+.modal .modalContent a:focus{
+  display: inline;
+  outline: none;  
+}
+
+.modal .modalContent a:focus img{
+  display: inline;
+}
+
+.modal .modalContent a:hover img{
+  display: inline;
+}
+
+/*Cuadro*/
+.Cuadro{
+    width: 100%;
+    height: 100%;
+}
+
+.pixel{
     width: 100%;
     height: 100%;
 }

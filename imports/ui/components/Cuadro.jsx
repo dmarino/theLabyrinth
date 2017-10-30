@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 import { Link, Redirect } from 'react-router-dom';
 
-import "../styles/Cuadro.css";
-
 class Cuadro extends Component{
 
     mover(){

@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 
-import "../styles/Inicio.css";
-
 class Inicio extends Component{
 
 	constructor(props){
