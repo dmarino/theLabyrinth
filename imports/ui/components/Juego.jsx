@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Meteor } from 'meteor/meteor';
 import { Link, Redirect } from 'react-router-dom';
 
+import "../styles/Juego.css";
+
 import Cuadro from "./Cuadro.jsx";
 
 class Juego extends Component{

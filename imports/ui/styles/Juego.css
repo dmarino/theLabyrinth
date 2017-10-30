@@ -1,9 +1,9 @@
-.Cuadro{
+.Juego{
 	width: 100%;
 	height: 100%;
 }
 
-.pixel{
+#tablero{
 	width: 100%;
 	height: 100%;
 }
