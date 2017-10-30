@@ -105,7 +105,8 @@ class Juego extends Component{
 	render(){
 		return (
 			<div className="Juego">
-			    <h1>Juega</h1>
+                <h1>Controles:</h1>
+                <p>yo</p>
 			    {(this.props.partida!== undefined && this.props.partida.tipo !== undefined)?
 			        <Link to={{
                       pathname: '/inicio'
