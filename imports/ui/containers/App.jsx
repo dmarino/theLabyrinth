@@ -129,7 +129,7 @@ class App extends Component{
     	}
     	else{
             datosForServer={
-        	    posJugador2:pos
+       	        posJugador2:pos
             }; 
             partida.posJugador2 = pos;               		
     	}
@@ -166,7 +166,7 @@ class App extends Component{
  				    	<Juego {...routeProps} 
  				    		partida={this.state.juegoActual} 
  				    		jugador={this.state.jugador}
-			                mover={(partida, jugador, pos) => { this.terminar(partida, jugador, pos) }}	 				    		
+			                mover={(partida, jugador, pos) => { this.mover(partida, jugador, pos) }}	 				    		
  			                terminar={(partida) => { this.terminar(partida) }}						    		
  				    	/>} 
  				    />

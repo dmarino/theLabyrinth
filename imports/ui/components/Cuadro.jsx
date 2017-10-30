@@ -7,6 +7,10 @@ import "../styles/Cuadro.css";
 
 class Cuadro extends Component{
 
+    mover(){
+        this.props.mover(this.props.cuadro);
+    }
+
 	renderAlt(){
     	if(this.props.mostrar){
     		alternative = "Posición " + this.props.cuadro.x + " en X y " + this.props.cuadro.y + " en Y. Puedes ver ";
@@ -47,8 +51,7 @@ class Cuadro extends Component{
 	render(){
 		return (
 			<div className="Cuadro"
-                onClick = {() => { this.props.mover(this.props.cuadro.x, this.props.cuadro.y)}}
-
+                onClick = {() => { this.mover()}}
             >
                 {this.renderImagen()}
             </div>		
