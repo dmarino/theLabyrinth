@@ -112,7 +112,7 @@ class App extends Component{
 
         };
 
-        Meteor.call("partidas.update", partida._id,datosForServer);
+        Meteor.call("partidas.updateInsertar", partida._id,datosForServer);
 		this.setState({
 		    estado:"jugar",
 		    juegoActual: partida,
