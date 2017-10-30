@@ -26,3 +26,23 @@
   display: block;
     
 }
+
+#alias {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 1rem;
+  left: 50%;
+  width: 90%
+  padding: 10px 0px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  text-align: left;
+
+}
+
+#alias:focus{
+    outline: none;
+}

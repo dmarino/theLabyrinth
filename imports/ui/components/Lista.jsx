@@ -30,7 +30,7 @@ class Lista extends Component{
     	if(this.props.partidas === undefined)
     		return (<div>No hay partidas</div>);
         return this.props.partidas.filter(
-        	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo")
+        	t => (t.autor.startsWith(this.state.busqueda) && t.tipo != "solo" && !t.jugador2)
         ).map((t,i)=>{
             return (
                 <Partida 
@@ -82,8 +82,8 @@ class Lista extends Component{
                 :
                     null
                 }
-                <p ref={(p) => { this.primero = p; }} > Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente o seleccionar una partida de la lista de partidas actuales.</p>   
                 <h1>Partidas Actuales</h1>
+                <p ref={(p) => { this.primero = p; }} > Para iniciar una partida puedes hacer click en el link crear nueva partida. También puedes buscar una partida existente o seleccionar una partida de la lista de partidas actuales.</p>                   
                 <div id="contenedorLista">
                     <div id="headerLista">
                         <input id="nombre" aria-label="Buscar partida por jugador 1" className="input" type="text" placeholder="Jugador 1" onChange={this.handleChange}></input>               
