@@ -10,6 +10,7 @@ class Juego extends Component{
     constructor(props){
         super(props);
         this.state = {
+            filas:[0,1,2,3,4,5,6]
         }
     }    
 
@@ -21,38 +22,42 @@ class Juego extends Component{
         this.props.mover(this.props.partida, this.props.jugador, pos);
     }
 
-    renderJuego(){
-        if(this.props.partida.laberinto){
-
-            return this.props.partida.laberinto.layout.map((t,i)=>{
-                html = "";
-                if(i%7==0){
-                    html += "<tr>";
-                }
-                if((this.props.partida.posJugador1.x == t.x && this.props.partida.posJugador1.y == t.y)){
-                    html += "<th>"
-                    html += <Cuadro 
-                            key={i}
-                            cuadro ={t}
-                            mostrar = {true}
-                            mover={(x,y) => { this.mover(x,y) }}                              
-                        />
-                    html += "</th>";    
+    renderFila(num){
+            return this.props.partida.laberinto.layout.filter(t => (t.x==num)).map((t,i)=>{
+                
+                if(this.props.partida.posJugador1.x == t.x && this.props.partida.posJugador1.y == t.y){                
+                    return (
+                        <td key={i}>
+                            <h1>1</h1>
+                            <Cuadro 
+                                cuadro ={t}
+                                mostrar = {true}
+                                mover={(x,y) => { this.mover(x,y) }}                              
+                            ></Cuadro>
+                        </td>                                                
+                    );
+ 
                 }  
                 else{
-                    html += "<th>"
-                    html += <Cuadro 
-                            key={i}
-                            cuadro ={t}
-                            mostrar = {false}
-                            mover={(x,y) => { this.mover(x,y) }}                              
-                        />
-                    html += "</th>";               
-                } 
-                if(i%7==6){
-                    html += "</tr>";
-                }
-                return html;                  
+                    return(
+                        <td key={i}>
+                            <h1>2</h1>
+                            <Cuadro 
+                                cuadro ={t}
+                                mostrar = {false}
+                                mover={(x,y) => { this.mover(x,y) }}                              
+                            ></Cuadro>
+                        </td>                                               
+                    );              
+                }                   
+            });
+    }
+    renderJuego(){
+        if(this.props.partida.laberinto){
+            return this.state.filas.map((t,i) =>{
+                <tr key={i}>
+                    {this.renderFila(t)}
+                </tr>
             });
         }
     }

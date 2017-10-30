@@ -1,6 +1,5 @@
 .Cuadro{
-	display: inline-block;
-	width: 13%;
+	display: table-column;
 }
 
 .pixel{
