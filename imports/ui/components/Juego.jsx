@@ -108,6 +108,8 @@ class Juego extends Component{
                 <h1>Iniciar Partida</h1>
                 <p>Controles: Para jugar debes hacer click a la casilla a la que quieras moverte. El objetivo del juego es llegar al centro del laerinto</p>
 			    {(this.props.partida!== undefined && this.props.partida.tipo !== undefined)?
+                    <span>Jugador 1: {this.props.partida.autor}</span>
+                    <span>Jugador 2: {this.props.partida.jugador2}</span>
 			        <Link 
                         to={{ pathname: '/inicio'}}
                     ><a className="cerrar" onClick = {() => { this.props.terminar(this.props.partida)}}> Salir</a>
