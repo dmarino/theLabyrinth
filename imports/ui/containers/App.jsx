@@ -122,19 +122,12 @@ class App extends Component{
 
     mover(partida,jugador,pos){
     	if(jugador==1){
-            datosForServer={
-        	    posJugador1:pos
-            };
             partida.posJugador1 = pos;
     	}
     	else{
-            datosForServer={
-       	        posJugador2:pos
-            }; 
             partida.posJugador2 = pos;               		
     	}
-
-        Meteor.call("partidas.update", partida._id,datosForServer);
+        Meteor.call("partidas.update", partida._id,jugador,pos);
 		this.setState({
 		    juegoActual: partida,
 		});

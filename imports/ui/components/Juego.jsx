@@ -18,10 +18,8 @@ class Juego extends Component{
     }    
 
     mover(cuadro){
-        console.log(cuadro);
         cambiar=false;
-        if(!this.state.posActual.x){
-            console.log("primero");            
+        if(this.state.posActual.x === undefined){
             if((cuadro.x==1 && cuadro.y==0)&& this.props.partida.laberinto.layout[0].derecha==0){
                 cambiar=true;
             }
@@ -30,7 +28,6 @@ class Juego extends Component{
             }            
         }
         else{
-            console.log("dos");
             if((cuadro.x-this.state.posActual.x==1)&&(cuadro.y-this.state.posActual.y==0)&&(this.state.posActual.derecha==0)){
                 cambiar=true;               
             }
@@ -45,17 +42,14 @@ class Juego extends Component{
             }            
         }
         if(cambiar){
-            console.log("cambiar");
             pos={
                 x:cuadro.x,
                 y:cuadro.y
             };
             this.props.mover(this.props.partida, this.props.jugador, pos);
-
             this.setState({
                 posActual:cuadro
             });
-            console.log(this.state.posActual);
         }      
     }
 
@@ -105,7 +99,7 @@ class Juego extends Component{
                     }}><button onClick = {() => { this.props.terminar(this.props.partida)}}> Salir </button>
                     </Link>
 			    :
-                    null
+                     <Redirect to="/Unexistent Game"></Redirect>
 			    }
 			    <table id="tablero">
                     <tbody>
