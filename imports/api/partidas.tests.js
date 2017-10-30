@@ -14,7 +14,7 @@ const setupEscenario1 = (nombre)=>{
 	    posJugador1:{x:10,y:10}
 	};
 
-	Meteor.call("partidas.insertar", datos);
+	Meteor.call("partidas.insertarForTest", datos);
 };
 
 
@@ -36,7 +36,7 @@ if (Meteor.isServer) {
 			    posJugador1:{x:10,y:10}
   			};
 
-  			Meteor.call("partidas.insertar", datos);
+  			Meteor.call("partidas.insertarForTest", datos);
 
   			let partidaActual = Partidas.findOne({autor:nombre});
   			assert.equal(10, partidaActual.posJugador1.x);
