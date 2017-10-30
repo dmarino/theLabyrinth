@@ -19,6 +19,7 @@ class Juego extends Component{
 
     mover(cuadro){
         cambiar=false;
+        console.log(this.state.posActual);
         if(this.state.posActual.x === undefined){
             if((cuadro.x==1 && cuadro.y==0)&& this.props.partida.laberinto.layout[0].derecha==0){
                 cambiar=true;
@@ -50,6 +51,10 @@ class Juego extends Component{
             this.setState({
                 posActual:cuadro
             });
+            if(cuadro.x===3 && cuadro.y===3){
+                alert("Ganaste! :D");
+                this.props.terminar(this.props.partida);
+            }
         }      
     }
 
@@ -98,7 +103,7 @@ class Juego extends Component{
                       pathname: '/inicio'
                     }}><button onClick = {() => { this.props.terminar(this.props.partida)}}> Salir </button>
                     </Link>
-			    :
+			    :(this.props.jugador!==0)? <Redirect to="/Inicio"></Redirect>:
                      <Redirect to="/Unexistent Game"></Redirect>
 			    }
 			    <table id="tablero">
