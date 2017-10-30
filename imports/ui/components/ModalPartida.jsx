@@ -50,6 +50,7 @@ class ModalPartida extends Component{
 			<div className="modalPartida">
 				{this.props.estado == "crear" ?
 					<div className="modalContent">
+					    <a id="cerrar" aria-label="Cerrar ventana" onClick={() => { this.props.cerrarModal()}}>x</a>
 					    <h1>Crear Partida</h1>
 			            <p className="itemModal">Antes de crear la partida debes seleccionar el tipo de partida y el nombre con el que vas a entrar a ella.</p>
 			            <p>{this.state.text}</p>
@@ -71,6 +72,8 @@ class ModalPartida extends Component{
                     </div>            
 				:
 					<div className="modalContent">
+					    <a id="cerrar" aria-label="Cerrar ventana" onClick={() => { this.props.cerrarModal()}}>x</a>
+					    <h1>Ingresar Partida</h1>					    					
 			            <p  className="itemModal" >Para entrar a la partida de {this.props.partida.autor} primero escoge un alias</p>
 			            <p>{this.state.text}</p>
 			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 

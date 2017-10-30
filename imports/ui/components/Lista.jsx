@@ -53,7 +53,14 @@ class Lista extends Component{
             tipoModal:"entrar",
             partida: partidaP
         })
-    }      
+    }  
+
+    cerrarModal(){
+        this.setState({
+            modal:false,
+            tipoModal:"",
+        })    
+    }    
 
     crearPartida(tipoL, alias){
     	this.props.crearPartida(tipoL,alias);
@@ -73,6 +80,7 @@ class Lista extends Component{
                 {this.state.modal ?
                     <ModalPartida
                         estado={this.state.tipoModal}
+                        cerrarModal={() => { this.cerrarModal() }}                        
                         crearPartida={(tipoL,alias) => { this.crearPartida(tipoL,alias) }}
                         entrarPartida={(partida,alias) => { this.entrarPartida(partida,alias) }}  
                         partida={this.state.partida}>
