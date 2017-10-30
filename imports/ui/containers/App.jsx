@@ -42,7 +42,7 @@ class App extends Component{
 		    });*/
 		    datosForServer={
 		    	autor: nombre, 
-		        laberinto: laberinto._id,
+		        laberinto: laberinto,
 		        tipo: tipoL,
 		        posJugador1 : {
 		            "x":0,
@@ -128,6 +128,8 @@ class App extends Component{
             partida.posJugador2 = pos;               		
     	}
         Meteor.call("partidas.update", partida._id,jugador,pos);
+        partida= Partidas.find({"_id":partida._id}).fetch()[0];
+        console.log(partida);
 		this.setState({
 		    juegoActual: partida,
 		});
