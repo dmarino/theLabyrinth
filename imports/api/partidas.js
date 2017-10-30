@@ -40,8 +40,8 @@ Meteor.methods({
 		check(id, String);
 		check(player, Number);
 		check(datos,{
-			"x":Number;
-			"y":Number;
+			"x":Number,
+			"y":Number
 		});
 		if(player===1)
 		{
@@ -58,7 +58,7 @@ Meteor.methods({
 				}
 			});
 		}
-	}
+	},
 
 	"partidas.remove"(id){
 		check(id, String);
