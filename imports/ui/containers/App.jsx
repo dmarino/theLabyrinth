@@ -94,9 +94,9 @@ class App extends Component{
     }
 
     entrarPartida(partida, nombre){
-	    laberinto = Laberintos.find({"_id": partida.laberinto}).fetch()[0];
 
-	    partida.laberinto = laberinto;
+	    partida = Partidas.find({"_id": partida._id}).fetch()[0];
+
         partida.jugador2 = nombre;
 
 	    ubicacion={};
@@ -105,24 +105,9 @@ class App extends Component{
 		                "x":6,
 		                "y":6
 		            }            
-            /*Partidas.update(partida._id, {
-                $set: { 
-                    jugador2: nombre,
-                    posJugador2:  {
-		                "x":6,
-		                "y":6
-		            }
-                },
-            });*/
         }
         else{
         	ubicacion = partida.posJugador1;
-            /*Partidas.update(partida._id, {
-                $set: { 
-                    jugador2: nombre,
-                    posJugador2: partida.posJugador1
-                },
-            });*/
         }
 		
 		partida.posJugador2 = ubicacion;   
@@ -134,6 +119,7 @@ class App extends Component{
         };
 
         Meteor.call("partidas.updateInsertar", partida._id,datosForServer);
+	    partida = Partidas.find({"_id": partida._id}).fetch()[0];
 		this.setState({
 		    estado:"jugar",
 		    juegoActual: partida,
@@ -150,7 +136,6 @@ class App extends Component{
     	}
         Meteor.call("partidas.update", partida._id,jugador,pos);
         partida= Partidas.find({"_id":partida._id}).fetch()[0];
-        console.log(partida);
 		this.setState({
 		    juegoActual: partida,
 		});
