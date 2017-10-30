@@ -17,7 +17,7 @@ Meteor.methods({
 	"partidas.insertar"(datos){
 		check(datos,{
 			"autor":String,
-			"laberinto":Meteor.Collection.ObjectID,
+			"laberinto":/*String,*/Meteor.Collection.ObjectID,
 			"tipo":String,
 		    "posJugador1":Object
 		});
@@ -33,8 +33,32 @@ Meteor.methods({
 		});
 		Partidas.update(id, {
             $set: datos
-        });
+        });p
 	},
+
+	"partidas.update"(id, player, datos){
+		check(id, String);
+		check(player, Number);
+		check(datos,{
+			"x":Number;
+			"y":Number;
+		});
+		if(player===1)
+		{
+			Partidas.update(id,{
+					$set:{
+						posJugador1:datos
+					}
+			});	
+		}
+		else if(player===2){
+			Partidas.update(id,{
+				$set:{
+					posJugador2:datos
+				}
+			});
+		}
+	}
 
 	"partidas.remove"(id){
 		check(id, String);

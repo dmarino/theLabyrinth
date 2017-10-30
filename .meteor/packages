@@ -22,3 +22,6 @@ arillo:flow-router-helpers
 session
 check
 audit-argument-checks
+practicalmeteor:mocha
+xolvio:cleaner
+dburles:factory
