@@ -25,6 +25,17 @@ Meteor.methods({
 		Partidas.insert(datos);
 	},
 
+	"partidas.insertarForTest"(datos){
+		check(datos,{
+			"autor":String,
+			"laberinto":String,
+			"tipo":String,
+		    "posJugador1":Object
+		});
+
+		Partidas.insert(datos);
+	},
+
 	"partidas.updateInsertar"(id, datos){
 		check(id, String);
 		check(datos,{
