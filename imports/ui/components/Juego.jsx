@@ -23,41 +23,39 @@ class Juego extends Component{
     }
 
     renderFila(num){
-            return this.props.partida.laberinto.layout.filter(t => (t.x==num)).map((t,i)=>{
-                
-                if(this.props.partida.posJugador1.x == t.x && this.props.partida.posJugador1.y == t.y){                
-                    return (
-                        <td key={i}>
-                            <h1>1</h1>
-                            <Cuadro 
-                                cuadro ={t}
-                                mostrar = {true}
-                                mover={(x,y) => { this.mover(x,y) }}                              
-                            ></Cuadro>
-                        </td>                                                
-                    );
- 
-                }  
-                else{
-                    return(
-                        <td key={i}>
-                            <h1>2</h1>
-                            <Cuadro 
-                                cuadro ={t}
-                                mostrar = {false}
-                                mover={(x,y) => { this.mover(x,y) }}                              
-                            ></Cuadro>
-                        </td>                                               
-                    );              
-                }                   
-            });
+        return this.props.partida.laberinto.layout.filter(t => (t.x==num)).map((t,i)=>{
+            if(this.props.partida.posJugador1.x == t.x && this.props.partida.posJugador1.y == t.y){              
+                return (
+                    <td key={i}>
+                         <Cuadro 
+                             cuadro ={t}
+                             mostrar = {true}
+                             mover={(x,y) => { this.mover(x,y) }}                              
+                         ></Cuadro>
+                    </td>                                                
+                );
+
+            }  
+            else{
+                return(
+                    <td key={i}>
+                        <Cuadro 
+                            cuadro ={t}
+                            mostrar = {false}
+                            mover={(x,y) => { this.mover(x,y) }}                              
+                        ></Cuadro>
+                    </td>                                               
+                );              
+            }                   
+        });
     }
     renderJuego(){
+        console.log(this.props);
         if(this.props.partida.laberinto){
             return this.state.filas.map((t,i) =>{
-                <tr key={i}>
+                return (<tr key={i}>
                     {this.renderFila(t)}
-                </tr>
+                </tr>);
             });
         }
     }
@@ -75,7 +73,9 @@ class Juego extends Component{
                     <Redirect to="/Unexistent Game"></Redirect>
 			    }
 			    <table id="tablero">
-			        {this.renderJuego()}
+                    <tbody>
+                        {this.renderJuego()}
+                    </tbody>
 			    </table>
 			</div>
 		);
