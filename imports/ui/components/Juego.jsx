@@ -68,7 +68,18 @@ class Juego extends Component{
                          ></Cuadro>
                     </td>                                                
                 );
-            }  
+            } 
+            else if(this.props.partida.jugador2 && this.props.partida.posJugador2.x == t.x && this.props.partida.posJugador2.y == t.y){
+                return (
+                    <td key={i}>
+                         <Cuadro 
+                             cuadro ={t}
+                             mostrar = {true}
+                             mover={(cuadro) => { this.mover(cuadro) }}                              
+                         ></Cuadro>
+                    </td>                                                
+                );
+            } 
             else{
                 return(
                     <td key={i}>
