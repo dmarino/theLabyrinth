@@ -110,16 +110,18 @@ class Juego extends Component{
 			    {(this.props.partida!== undefined && this.props.partida.tipo !== undefined)?
 			        <Link 
                         to={{ pathname: '/inicio'}}
-                    ><button className="cerrar" onClick = {() => { this.props.terminar(this.props.partida)}}> Salir</button>
+                    ><a className="cerrar" onClick = {() => { this.props.terminar(this.props.partida)}}> Salir</a>
                     </Link>
 			    :(this.props.jugador!==0)? <Redirect to="/Inicio"></Redirect>:
                      <Redirect to="/Unexistent Game"></Redirect>
 			    }
-			    <table id="tablero">
-                    <tbody>
-                        {this.renderJuego()}
-                    </tbody>
-			    </table>
+                <div id="contenedor">
+                    <table id="tablero">
+                        <tbody>
+                            {this.renderJuego()}
+                        </tbody>
+                    </table>
+                </div>
 			</div>
 		);
 	}
