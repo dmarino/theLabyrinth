@@ -27,6 +27,19 @@ class App extends Component{
 		};
 	}
 
+
+	componentWillUpdate(newProps){
+		juegos = newProps.partidas;
+		if(juegoActual._id!== undefined){
+			juegos.map((t)=>{
+				if(t._id === juegoActual._id){
+					juegoActual=t;
+				}
+				console.log(t);
+			});
+		}
+	}
+
 	crearPartida(tipoL, nombre){
         if(this.props.laberintos.length!=0){
 
