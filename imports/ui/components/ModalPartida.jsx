@@ -11,7 +11,8 @@ class ModalPartida extends Component{
 		super(props);
 		this.state = {
 			alias:"",
-			tipo:"coop"
+			tipo:"coop",
+			text:""
 		};
 	}
 
@@ -29,7 +30,14 @@ class ModalPartida extends Component{
 
 
     crearPartida(){
-    	this.props.crearPartida(this.state.tipo,this.state.alias);
+    	if(this.state.alias !== ""){
+    		this.props.crearPartida(this.state.tipo,this.state.alias);
+    	}
+    	else{
+    		this.setState({
+    			text:"Por favor ingrese un usuario valido."
+    		});
+    	}
     }	
 
     entrarPartida(){
@@ -63,6 +71,7 @@ class ModalPartida extends Component{
 				:
 					<div className="modalContent">
 			            <p  className="itemModal" >Para entrar a la partida de {this.props.partida.autor} primero escoge un alias</p>
+			            <p>{text}</p>
 			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
 			            <Link  className="itemModal" aria-label="Entrar a partida" to={{
 				            pathname: '/juego'}}

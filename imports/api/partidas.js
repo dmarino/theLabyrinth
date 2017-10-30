@@ -17,7 +17,7 @@ Meteor.methods({
 	"partidas.insertar"(datos){
 		check(datos,{
 			"autor":String,
-			"laberinto":String,//Meteor.Collection.ObjectID,
+			"laberinto":/*String,*/Meteor.Collection.ObjectID,
 			"tipo":String,
 		    "posJugador1":Object
 		});
