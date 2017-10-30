@@ -222,7 +222,11 @@ p:focus{
 }
 
 #tablero{
-    width: 100%;
+    height: 100%;
+}
+
+.Juego > h1{
+    font-size: 3rem;    
 }
 
 /*Inicio*/
