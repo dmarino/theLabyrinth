@@ -20,10 +20,6 @@ class Lista extends Component{
 		}
 	}
 
-    componentDidMount(){
-        console.log(this.primero);
-        this.primero.focus();
-    }
 	handleChange = (event) => {
 		this.setState({
 			busqueda: event.target.value,

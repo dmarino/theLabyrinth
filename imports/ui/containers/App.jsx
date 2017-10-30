@@ -37,7 +37,7 @@ class App extends Component{
 		        tipo: tipoL,
 		        posJugador1 : {
 		            "x":0,
-		            "y":0
+		            "y":0¿
 		        }
 		    });*/
 		    datosForServer={
@@ -76,13 +76,14 @@ class App extends Component{
 	    laberinto = Laberintos.find({"_id": partida.laberinto}).fetch()[0];
 
 	    partida.laberinto = laberinto;
+        partida.jugador2 = nombre;
 
 	    ubicacion={};
         if(partida.tipo == "vs"){
         	ubicacion={
 		                "x":6,
 		                "y":6
-		            }
+		            }            
             /*Partidas.update(partida._id, {
                 $set: { 
                     jugador2: nombre,
@@ -102,6 +103,8 @@ class App extends Component{
                 },
             });*/
         }
+		
+		partida.posJugador2 = ubicacion;   
 
         datosForServer={
         	jugador2: nombre,
@@ -114,6 +117,26 @@ class App extends Component{
 		    estado:"jugar",
 		    juegoActual: partida,
 		    jugador:2
+		});
+    }
+
+    mover(partida,jugador,pos){
+    	if(jugador==1){
+            datosForServer={
+        	    posJugador1:pos
+            };
+            partida.posJugador1 = pos;
+    	}
+    	else{
+            datosForServer={
+        	    posJugador2:pos
+            }; 
+            partida.posJugador2 = pos;               		
+    	}
+
+        Meteor.call("partidas.update", partida._id,datosForServer);
+		this.setState({
+		    juegoActual: partida,
 		});
     }
 
@@ -142,6 +165,8 @@ class App extends Component{
 					<Route path='/juego' render={routeProps => 
  				    	<Juego {...routeProps} 
  				    		partida={this.state.juegoActual} 
+ 				    		jugador={this.state.jugador}
+			                mover={(partida, jugador, pos) => { this.terminar(partida, jugador, pos) }}	 				    		
  			                terminar={(partida) => { this.terminar(partida) }}						    		
  				    	/>} 
  				    />

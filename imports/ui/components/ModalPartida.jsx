@@ -45,8 +45,8 @@ class ModalPartida extends Component{
 					    <h1>Crear Partida</h1>
 			            <p className="itemModal">Antes de crear la partida debes seleccionar el tipo de partida y el nombre con el que vas a entrar a ella.</p>
 			            <input  className="itemModal" id="alias" aria-label="Nombre en la partida" type="text" placeholder="Nombre" onChange={this.handleChange}></input> 
-			            <select  className="itemModal" aria-label="Tipo de partida" id="tipo" onChange={this.handleChangeDos}>		
-                            <option value="coop" selected >Cooperativo</option>
+			            <select  className="itemModal" aria-label="Tipo de partida" id="tipo" onChange={this.handleChangeDos} defaultValue="coop">		
+                            <option value="coop">Cooperativo</option>
                             <option value="vs">Versus</option>
                             <option value="solo">Solo</option>
 				        </select>
