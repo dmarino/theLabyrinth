@@ -141,11 +141,48 @@ class App extends Component{
 		});
     }
 
-    terminar(partida){
-    	Meteor.call("partidas.remove", partida._id);
-		this.setState({
-		    juegoActual: {}
-		});         
+    terminar(partida, ganador, modo){
+    	if(ganador===0){
+    		if(this.state.jugador===1 && partida.posJugador2!==undefined){
+    			alert("No puede abandonar teniendo un invitado");
+    		}
+    		else if(this.state.jugador===2){
+    			datosForServer={
+		        	jugador2: undefined,
+		        	posJugador2:undefined
+
+		        };
+
+		        Meteor.call("partidas.updateInsertar", partida._id,datosForServer);
+			    partida = Partidas.find({"_id": partida._id}).fetch()[0];
+				this.setState({
+				    estado:"jugar",
+				    juegoActual: {},
+				    jugador:0
+				});
+    		}
+    		else{
+    			Meteor.call("partidas.remove", partida._id);
+				this.setState({
+				    juegoActual: {}
+				});
+    		}
+    	}
+    	else{
+    		if(modo === "Coop"){
+    			Meteor.call("partidas.remove", partida._id);
+				this.setState({
+				    juegoActual: {}
+				});
+				   
+    		}
+    		else{
+    			Meteor.call("partidas.remove", partida._id);
+				this.setState({
+				    juegoActual: {}
+				});
+    		}
+    	}         
     }  
 	
 	render(){
